@@ -1,9 +1,7 @@
 
 from bs4 import BeautifulSoup
 
-import os
 import requests
-import urllib
 
 html = requests.get("https://legis.senado.leg.br/comissoes/docsRecCPI?codcol=2441").content
 
