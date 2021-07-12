@@ -23,4 +23,4 @@ with open("%s.%s" % (links[0]["name"],"pdf"),"wb") as pdf:
     for chunk in r.iter_content(chunk_size=1024):
          # writing one chunk at a time to pdf file
          if chunk:
-             pdf.write(chunk)
+             pdf.write(chunk) 
