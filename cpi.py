@@ -15,11 +15,10 @@ for table in soup.find_all("table", class_="table"):
     for anchor in table.find_all('a'):
         links.append({"name":anchor.contents[0], "link":anchor['href']})
 
-print(links[0])
-
-r = requests.get(links[0]["link"], stream = True)
-
-with open("%s.%s" % (links[0]["name"],"pdf"),"wb") as pdf:
-    for chunk in r.iter_content(chunk_size=1024):
-         if chunk:
-             pdf.write(chunk)
+for link in links:
+    print("Downloading file: %s.pdf" % (link["name"]))
+    r = requests.get(link["link"], stream = True)
+    with open("%s.%s" % (link["name"],"pdf"),"wb") as pdf:
+        for chunk in r.iter_content(chunk_size=1024):
+            if chunk:
+                pdf.write(chunk)
